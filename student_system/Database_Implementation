@@ -1,0 +1,47 @@
+--Create a Database with this name: “student_database“.
+
+create database student_database;
+
+--Create the table “student_register” under the “student_database” database.
+
+create table student_register(
+   f_name VARCHAR(50) NOT NULL,
+   l_name VARCHAR(50) NOT NULL,
+   email VARCHAR(100) NOT NULL,
+   question VARCHAR(50) NOT NULL,
+   answer VARCHAR(100) NOT NULL,
+   password VARCHAR(50) NOT NULL,
+   PRIMARY KEY ( email )
+);
+
+--Create a Dedicated MySQL User and Grant Privileges
+--Log in to MySQL:
+
+You’ll need to have administrative access to your MySQL server. You can log in using the MySQL command-line client:
+
+mysql -u root -p
+
+Hostname: 3.95.211.31
+
+--Create a New User:
+
+CREATE USER 'admin'@'3.95.211.31' IDENTIFIED BY 'admin';
+
+--Grant Privileges:
+
+GRANT ALL PRIVILEGES ON student_database.* TO 'admin'@'3.95.211.31';
+
+--Grant specific privileges (e.g., GRANT CREATE, ALTER, DROP, INSERT, UPDATE, INDEX, DELETE, SELECT, REFERENCES, RELOAD) on a specific database:
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON student_database.* TO 'admin'@'3.95.211.31';
+
+--Grant all privileges on all databases (not recommended for security reasons):
+
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'3.95.211.31';
+
+--Apply Privileges:
+
+FLUSH PRIVILEGES;
+
+
+
